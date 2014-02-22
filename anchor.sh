@@ -3,7 +3,7 @@
 cd /vagrant/laravel
 
 # get anchor
-git clone https://github.com/studioromeo/ac.git workbench/anchor/core
+git clone https://github.com/studioromeo/lanchor.git workbench/anchor/core
 
 # load the workbench
 composer dump-autoload
@@ -21,6 +21,10 @@ php artisan migrate --bench="anchor/core"
 #seed the database
 cd workbench/anchor/core
 composer install --dev
+
+# while we are here lets go back to ssh pushing
+sudo git remote set-url origin git@github.com:studioromeo/lanchor.git
+
 cd ../../../
 php artisan db:seed --class="Anchor\Core\Database\Seeds\DatabaseSeeder"
 
